@@ -30,7 +30,8 @@
                                     </a>
                                 </span>
                                 <span class="float-right mr-2">
-                                    <a href="#" style="color:#364fc2cc"><i class="fa fa-eye" aria-hidden="true"></i>
+                                    <a href="todos/{{$todo->id}}" style="color: #00bcd5">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
                                 </span>
                             </li>

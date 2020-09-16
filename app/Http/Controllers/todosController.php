@@ -12,8 +12,17 @@ class todosController extends Controller
         $todos = Todo::all();
 
         //return view('todos', ['todos'=> $todos]);
-        return view('todos.todos')->with('todos', $todos);
+        return view('todos.index')->with('todos', $todos);
         //return view('todos', compact('todos'));
     }
 
+
+    public function show($todo)
+    {
+        //$todo = Todo::find($todo);
+        //return $todo;
+
+        return view('todos.show')->with('todo', Todo::find($todo));
+        //return view('todos.show', ['todo'=> $todos]);
+    }
 }
