@@ -27,12 +27,12 @@ class todosController extends Controller
      * @param [type] $todo
      * @return void
      */
-    public function show($todo)
+    public function show(Todo $todo)
     {
-        //$todo = Todo::find($todo);
+        //$todo = Todo::find($todo); == (Todo $todo)
         //return $todo;
 
-        return view('todos.show')->with('todo', Todo::find($todo));
+        return view('todos.show')->with('todo', $todo);
         //return view('todos.show', ['todo'=> $todos]);
     }
 
@@ -78,6 +78,8 @@ class todosController extends Controller
         $todo->description = $request->input('todoDescription');
         $todo->save(); //save data
 
+        $request->session()->flash('success', 'Todo Created Successfully');
+
         return redirect('/todos'); // redirect url
 
     }
@@ -87,30 +89,30 @@ class todosController extends Controller
      * @param [type] $todo
      * @return void
      */
-    public function edit($todo)
+    public function edit( Todo $todo)
     {
-        $todo = Todo::find($todo);
         return view('todos.edit')->with('todo', $todo);
     }
 
 
     /**
-     *validation and update data
+     *validation and update data 
      * @param Request $request
      * @param [type] $todo
      * @return void
      */
-    public function update(Request $request, $todo)
+    public function update(Request $request, Todo $todo)
     {
         $request->validate([
             'todoTitle' => 'required | min:5',
             'todoDescription' => 'required | min:5'
         ]);
 
-        $todo = Todo::find($todo);
         $todo->title = $request->get('todoTitle');
         $todo->description = $request->get('todoDescription');
         $todo->save();
+
+        $request->session()->flash('success', 'Todo Updated Successfully');
 
         return redirect('/todos');
 
@@ -118,14 +120,15 @@ class todosController extends Controller
 
 
     /**
-     *delete todo by id 
+     *delete todo by id
      * @param [type] $todo
      * @return void
      */
-    public function destroy($todo)
+    public function destroy(Todo $todo) //route model binding = ($todo = Todo::find($todo))
     {
-        $todo = Todo::find($todo);
         $todo->delete();
+
+        session()->flash('success', 'Todo Deleted Successfully');
 
         return redirect('/todos');
     }

@@ -9,6 +9,11 @@
                     <div class="card-header text-center">
                         <h1>All Todos</h1>
                     </div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         <ul class="list-group">
                             @forelse ($todos as $todo)
