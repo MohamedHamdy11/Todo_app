@@ -95,7 +95,7 @@ class todosController extends Controller
 
 
     /**
-     *validation and update data 
+     *validation and update data
      * @param Request $request
      * @param [type] $todo
      * @return void
@@ -117,4 +117,16 @@ class todosController extends Controller
     }
 
 
+    /**
+     *delete todo by id 
+     * @param [type] $todo
+     * @return void
+     */
+    public function destroy($todo)
+    {
+        $todo = Todo::find($todo);
+        $todo->delete();
+
+        return redirect('/todos');
+    }
 }

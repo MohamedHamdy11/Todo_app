@@ -11,11 +11,11 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
-                            @foreach ($todos as $todo)
+                            @forelse ($todos as $todo)
                                 <li class="list-group-item text-muted">
                                     {{ $todo->title }}
                                     <span class="float-right">
-                                        <a href="#" style="color:#f44336"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        <a href="/todos/{{ $todo->id }}/delete" style="color:#f44336"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                     </span>
                                     <span class="float-right mr-2">
@@ -28,7 +28,9 @@
                                         </a>
                                     </span>
                                 </li>
-                            @endforeach
+                                @empty
+                                    <p class="text-center"> No Todos. </p>
+                            @endforelse
                         </ul>
                     </div>
                 </div>
