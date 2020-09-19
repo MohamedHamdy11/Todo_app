@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Create Todo')
+@section('title','Edit Todo')
 
 @section('content')
 
@@ -9,20 +9,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h1>create a new todo</h1>
+                    <h1>edit todo</h1>
                 </div>
                 <div class="card-body">
-                    {{-- Display the validation Errors (all) --}}
-                  {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif --}}
-                    <form action="/create" method="POST">
+
+                    <form action="/todos/{{ $todo->id }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="text"
@@ -31,7 +22,7 @@
                             name="todoTitle"
                             {{-- The @error Directive step 1 --}}
                             class="@error('todoTitle') is-invalid @enderror"
-                            value="{{ old('todoTitle') }}"
+                            value="{{ $todo->title }}"
                             >
                         </div>
                         {{-- The @error Directive step 2 --}}
@@ -45,7 +36,7 @@
                             placeholder="Enter description for you todo"
                             name="todoDescription"
                             class="@error('todoDescription') is-invalid @enderror"
-                            >{{ old('todoDescription') }}</textarea>
+                            >{{ $todo->description }}</textarea>
                         </div>
                         @error('todoDescription')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -55,7 +46,7 @@
                             <button type="submit"
                             class="btn btn-success"
                             style="width: 40%"
-                            >Create</button>
+                            >Update</button>
                         </div>
                     </form>
                 </div>

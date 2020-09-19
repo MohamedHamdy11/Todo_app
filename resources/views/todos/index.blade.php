@@ -19,11 +19,11 @@
                                         </a>
                                     </span>
                                     <span class="float-right mr-2">
-                                        <a href="#" style="color:#3fe430"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        <a href="/todos/{{ $todo->id }}/edit" style="color:#3fe430"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                     </span>
                                     <span class="float-right mr-2">
-                                        <a href="todos/{{$todo->id}}" style="color: #00a2b6">
+                                        <a href="/todos/{{$todo->id}}" style="color: #00a2b6">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                     </span>
