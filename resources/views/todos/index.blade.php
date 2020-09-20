@@ -32,6 +32,13 @@
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
                                     </span>
+                                    @if (!$todo->completed)
+                                        <span class="float-right mr-2">
+                                            <a href="/todos/{{$todo->id}}/complete" style="color: #d67f0e">
+                                                <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
+                                    @endif
                                 </li>
                                 @empty
                                     <p class="text-center"> No Todos. </p>

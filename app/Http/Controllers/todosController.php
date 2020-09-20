@@ -96,7 +96,7 @@ class todosController extends Controller
 
 
     /**
-     *validation and update data 
+     *validation and update data
      * @param Request $request
      * @param [type] $todo
      * @return void
@@ -132,4 +132,17 @@ class todosController extends Controller
 
         return redirect('/todos');
     }
+
+    public function complete(Todo $todo)
+    {
+        $todo->completed = true;
+
+        $todo->save();
+
+        session()->flash('success', 'Todo Completed Successfully');
+
+        return redirect('/todos');
+
+    }
+
 }
